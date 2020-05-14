@@ -16,6 +16,9 @@
 		7BA1130B246D580500BE3C05 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1130A246D580500BE3C05 /* NetworkingError.swift */; };
 		7BA11313246D5E9300BE3C05 /* GamepediaEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA11312246D5E9300BE3C05 /* GamepediaEndpoint.swift */; };
 		7BA11316246D5F4600BE3C05 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA11315246D5F4600BE3C05 /* GlobalVariables.swift */; };
+		7BA1131F246D7BD700BE3C05 /* GameListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1131C246D7BD700BE3C05 /* GameListResponse.swift */; };
+		7BA11320246D7BD700BE3C05 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1131D246D7BD700BE3C05 /* GameModel.swift */; };
+		7BA11321246D7BD700BE3C05 /* GameListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1131E246D7BD700BE3C05 /* GameListRequest.swift */; };
 		7BCD45C1246D473D001A50B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45C0246D473D001A50B9 /* AppDelegate.swift */; };
 		7BCD45C5246D473D001A50B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45C4246D473D001A50B9 /* ViewController.swift */; };
 		7BCD45C8246D473D001A50B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45C6246D473D001A50B9 /* Main.storyboard */; };
@@ -48,6 +51,9 @@
 		7BA1130A246D580500BE3C05 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		7BA11312246D5E9300BE3C05 /* GamepediaEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamepediaEndpoint.swift; sourceTree = "<group>"; };
 		7BA11315246D5F4600BE3C05 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		7BA1131C246D7BD700BE3C05 /* GameListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListResponse.swift; sourceTree = "<group>"; };
+		7BA1131D246D7BD700BE3C05 /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		7BA1131E246D7BD700BE3C05 /* GameListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListRequest.swift; sourceTree = "<group>"; };
 		7BCD45BD246D473D001A50B9 /* Gamepedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gamepedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BCD45C0246D473D001A50B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BCD45C4246D473D001A50B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +114,24 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		7BA1131A246D7BD700BE3C05 /* Network Models */ = {
+			isa = PBXGroup;
+			children = (
+				7BA1131B246D7BD700BE3C05 /* Game List */,
+			);
+			path = "Network Models";
+			sourceTree = "<group>";
+		};
+		7BA1131B246D7BD700BE3C05 /* Game List */ = {
+			isa = PBXGroup;
+			children = (
+				7BA1131C246D7BD700BE3C05 /* GameListResponse.swift */,
+				7BA1131D246D7BD700BE3C05 /* GameModel.swift */,
+				7BA1131E246D7BD700BE3C05 /* GameListRequest.swift */,
+			);
+			path = "Game List";
+			sourceTree = "<group>";
+		};
 		7BCD45B4246D473D001A50B9 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +166,7 @@
 		7BCD45D4246D513F001A50B9 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				7BA1131A246D7BD700BE3C05 /* Network Models */,
 				7BA11311246D5E8100BE3C05 /* Endpoints */,
 				7BCD45D5246D5147001A50B9 /* Network Manager */,
 			);
@@ -231,11 +256,14 @@
 			files = (
 				7BA11313246D5E9300BE3C05 /* GamepediaEndpoint.swift in Sources */,
 				7BCD45D7246D52F1001A50B9 /* NetworkManager.swift in Sources */,
+				7BA11321246D7BD700BE3C05 /* GameListRequest.swift in Sources */,
 				7BCD45C5246D473D001A50B9 /* ViewController.swift in Sources */,
 				7BA11307246D54B200BE3C05 /* BaseURL.swift in Sources */,
 				7BA11316246D5F4600BE3C05 /* GlobalVariables.swift in Sources */,
+				7BA11320246D7BD700BE3C05 /* GameModel.swift in Sources */,
 				7BA11301246D541700BE3C05 /* Endpoint.swift in Sources */,
 				7BA1130B246D580500BE3C05 /* NetworkingError.swift in Sources */,
+				7BA1131F246D7BD700BE3C05 /* GameListResponse.swift in Sources */,
 				7BCD45C1246D473D001A50B9 /* AppDelegate.swift in Sources */,
 				7BA11305246D548F00BE3C05 /* API.swift in Sources */,
 				7BA11303246D543B00BE3C05 /* Response.swift in Sources */,
