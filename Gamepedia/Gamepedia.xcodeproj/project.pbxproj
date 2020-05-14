@@ -7,14 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BA112FC246D538800BE3C05 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA112FB246D538800BE3C05 /* Alamofire.framework */; };
+		7BA112FD246D538800BE3C05 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA112FB246D538800BE3C05 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7BA11301246D541700BE3C05 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA11300246D541700BE3C05 /* Endpoint.swift */; };
+		7BA11303246D543B00BE3C05 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA11302246D543B00BE3C05 /* Response.swift */; };
+		7BA11305246D548F00BE3C05 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA11304246D548F00BE3C05 /* API.swift */; };
+		7BA11307246D54B200BE3C05 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA11306246D54B200BE3C05 /* BaseURL.swift */; };
+		7BA1130B246D580500BE3C05 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1130A246D580500BE3C05 /* NetworkingError.swift */; };
+		7BA11313246D5E9300BE3C05 /* GamepediaEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA11312246D5E9300BE3C05 /* GamepediaEndpoint.swift */; };
+		7BA11316246D5F4600BE3C05 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA11315246D5F4600BE3C05 /* GlobalVariables.swift */; };
 		7BCD45C1246D473D001A50B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45C0246D473D001A50B9 /* AppDelegate.swift */; };
 		7BCD45C5246D473D001A50B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45C4246D473D001A50B9 /* ViewController.swift */; };
 		7BCD45C8246D473D001A50B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45C6246D473D001A50B9 /* Main.storyboard */; };
 		7BCD45CA246D473D001A50B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45C9246D473D001A50B9 /* Assets.xcassets */; };
 		7BCD45CD246D473D001A50B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45CB246D473D001A50B9 /* LaunchScreen.storyboard */; };
+		7BCD45D7246D52F1001A50B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45D6246D52F1001A50B9 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7BA112FE246D538800BE3C05 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7BA112FD246D538800BE3C05 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		7BA112F7246D537000BE3C05 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Alamofire; path = Carthage/Build/iOS/Alamofire.framework/Alamofire; sourceTree = "<group>"; };
+		7BA112FB246D538800BE3C05 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		7BA11300246D541700BE3C05 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		7BA11302246D543B00BE3C05 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		7BA11304246D548F00BE3C05 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		7BA11306246D54B200BE3C05 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
+		7BA1130A246D580500BE3C05 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		7BA11312246D5E9300BE3C05 /* GamepediaEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamepediaEndpoint.swift; sourceTree = "<group>"; };
+		7BA11315246D5F4600BE3C05 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		7BCD45BD246D473D001A50B9 /* Gamepedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gamepedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BCD45C0246D473D001A50B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BCD45C4246D473D001A50B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +55,7 @@
 		7BCD45C9246D473D001A50B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BCD45CC246D473D001A50B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BCD45CE246D473D001A50B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BCD45D6246D52F1001A50B9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +63,57 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BA112FC246D538800BE3C05 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7BA112F6246D537000BE3C05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BA112FB246D538800BE3C05 /* Alamofire.framework */,
+				7BA112F7246D537000BE3C05 /* Alamofire */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7BA112FF246D540700BE3C05 /* Network Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7BA11300246D541700BE3C05 /* Endpoint.swift */,
+				7BA11302246D543B00BE3C05 /* Response.swift */,
+				7BA11304246D548F00BE3C05 /* API.swift */,
+				7BA11306246D54B200BE3C05 /* BaseURL.swift */,
+				7BA1130A246D580500BE3C05 /* NetworkingError.swift */,
+			);
+			path = "Network Helpers";
+			sourceTree = "<group>";
+		};
+		7BA11311246D5E8100BE3C05 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				7BA11312246D5E9300BE3C05 /* GamepediaEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		7BA11314246D5EB300BE3C05 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				7BCD45C0246D473D001A50B9 /* AppDelegate.swift */,
+				7BA11315246D5F4600BE3C05 /* GlobalVariables.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		7BCD45B4246D473D001A50B9 = {
 			isa = PBXGroup;
 			children = (
 				7BCD45BF246D473D001A50B9 /* Gamepedia */,
 				7BCD45BE246D473D001A50B9 /* Products */,
+				7BA112F6246D537000BE3C05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,7 +128,8 @@
 		7BCD45BF246D473D001A50B9 /* Gamepedia */ = {
 			isa = PBXGroup;
 			children = (
-				7BCD45C0246D473D001A50B9 /* AppDelegate.swift */,
+				7BA11314246D5EB300BE3C05 /* Application */,
+				7BCD45D4246D513F001A50B9 /* Networking */,
 				7BCD45C4246D473D001A50B9 /* ViewController.swift */,
 				7BCD45C6246D473D001A50B9 /* Main.storyboard */,
 				7BCD45C9246D473D001A50B9 /* Assets.xcassets */,
@@ -62,6 +137,24 @@
 				7BCD45CE246D473D001A50B9 /* Info.plist */,
 			);
 			path = Gamepedia;
+			sourceTree = "<group>";
+		};
+		7BCD45D4246D513F001A50B9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7BA11311246D5E8100BE3C05 /* Endpoints */,
+				7BCD45D5246D5147001A50B9 /* Network Manager */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7BCD45D5246D5147001A50B9 /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7BCD45D6246D52F1001A50B9 /* NetworkManager.swift */,
+				7BA112FF246D540700BE3C05 /* Network Helpers */,
+			);
+			path = "Network Manager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +167,7 @@
 				7BCD45B9246D473D001A50B9 /* Sources */,
 				7BCD45BA246D473D001A50B9 /* Frameworks */,
 				7BCD45BB246D473D001A50B9 /* Resources */,
+				7BA112FE246D538800BE3C05 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,8 +229,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BA11313246D5E9300BE3C05 /* GamepediaEndpoint.swift in Sources */,
+				7BCD45D7246D52F1001A50B9 /* NetworkManager.swift in Sources */,
 				7BCD45C5246D473D001A50B9 /* ViewController.swift in Sources */,
+				7BA11307246D54B200BE3C05 /* BaseURL.swift in Sources */,
+				7BA11316246D5F4600BE3C05 /* GlobalVariables.swift in Sources */,
+				7BA11301246D541700BE3C05 /* Endpoint.swift in Sources */,
+				7BA1130B246D580500BE3C05 /* NetworkingError.swift in Sources */,
 				7BCD45C1246D473D001A50B9 /* AppDelegate.swift in Sources */,
+				7BA11305246D548F00BE3C05 /* API.swift in Sources */,
+				7BA11303246D543B00BE3C05 /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,11 +384,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YDABZ672Z5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Gamepedia/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/Alamofire.framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.egemenayhan.Gamepedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -301,11 +411,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YDABZ672Z5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Gamepedia/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/Alamofire.framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.egemenayhan.Gamepedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
