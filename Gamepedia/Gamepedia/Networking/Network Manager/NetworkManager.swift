@@ -29,7 +29,7 @@ final class NetworkManager {
         let dataRequest = session.request(request)
         dataRequest.responseData { dataResponse in
 
-            let result: Result<Request.Response, Error>
+            let result: Result<Request.Response, NetworkingError>
             switch dataResponse.result {
             case .success(let data):
                 do {

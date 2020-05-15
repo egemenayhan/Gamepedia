@@ -21,6 +21,6 @@ struct Response<Value> {
     let data: Data?
 
     /// Parsed response value for the given type
-    let result: Result<Value, Error>
+    let result: Result<Value, NetworkingError>
 
 }
