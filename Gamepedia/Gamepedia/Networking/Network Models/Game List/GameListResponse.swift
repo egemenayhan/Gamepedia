@@ -9,10 +9,10 @@
 struct GameListResponse: Decodable {
 
     let nextPage: String?
-    let results: [Game]?
+    let games: [Game]?
 
     enum CodingKeys: String, CodingKey {
         case nextPage = "next"
-        case results
+        case games = "results"
     }
 }
