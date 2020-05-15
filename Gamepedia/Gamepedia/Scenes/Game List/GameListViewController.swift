@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GameListViewController.swift
 //  Gamepedia
 //
 //  Created by Egemen Ayhan on 14.05.2020.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GameListViewController: BaseViewController {
 
+    // TODO: implementation
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        navigationItem.title = "GAMES"
     }
-
 }
-
