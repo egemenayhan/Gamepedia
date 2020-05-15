@@ -28,6 +28,8 @@
 		7BA11337246D86B600BE3C05 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA11336246D86B600BE3C05 /* BaseViewController.swift */; };
 		7BC29D8B246E85B700F173F2 /* UIColor+Gamepedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29D8A246E85B700F173F2 /* UIColor+Gamepedia.swift */; };
 		7BC29D8D246E949C00F173F2 /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29D8C246E949C00F173F2 /* GameListViewModel.swift */; };
+		7BC29D91246EB0CB00F173F2 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29D90246EB0CB00F173F2 /* GameTableViewCell.swift */; };
+		7BC29D93246EB0EF00F173F2 /* GameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BC29D92246EB0EF00F173F2 /* GameTableViewCell.xib */; };
 		7BCD45C1246D473D001A50B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45C0246D473D001A50B9 /* AppDelegate.swift */; };
 		7BCD45CA246D473D001A50B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45C9246D473D001A50B9 /* Assets.xcassets */; };
 		7BCD45CD246D473D001A50B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45CB246D473D001A50B9 /* LaunchScreen.storyboard */; };
@@ -70,6 +72,8 @@
 		7BA11336246D86B600BE3C05 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7BC29D8A246E85B700F173F2 /* UIColor+Gamepedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Gamepedia.swift"; sourceTree = "<group>"; };
 		7BC29D8C246E949C00F173F2 /* GameListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
+		7BC29D90246EB0CB00F173F2 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		7BC29D92246EB0EF00F173F2 /* GameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameTableViewCell.xib; sourceTree = "<group>"; };
 		7BCD45BD246D473D001A50B9 /* Gamepedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gamepedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BCD45C0246D473D001A50B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BCD45C9246D473D001A50B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 		7BA11326246D845D00BE3C05 /* Game List */ = {
 			isa = PBXGroup;
 			children = (
+				7BC29D8E246EB08000F173F2 /* Cell */,
 				7BA1132A246D849E00BE3C05 /* GameListViewController.swift */,
 				7BA11333246D863100BE3C05 /* GameListViewController.storyboard */,
 				7BC29D8C246E949C00F173F2 /* GameListViewModel.swift */,
@@ -209,6 +214,15 @@
 				7BCD45CE246D473D001A50B9 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		7BC29D8E246EB08000F173F2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7BC29D90246EB0CB00F173F2 /* GameTableViewCell.swift */,
+				7BC29D92246EB0EF00F173F2 /* GameTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		7BCD45B4246D473D001A50B9 = {
@@ -319,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BCD45CD246D473D001A50B9 /* LaunchScreen.storyboard in Resources */,
+				7BC29D93246EB0EF00F173F2 /* GameTableViewCell.xib in Resources */,
 				7BA11332246D861F00BE3C05 /* FavoritesViewController.storyboard in Resources */,
 				7BCD45CA246D473D001A50B9 /* Assets.xcassets in Resources */,
 				7BA11334246D863100BE3C05 /* GameListViewController.storyboard in Resources */,
@@ -347,6 +362,7 @@
 				7BA1130B246D580500BE3C05 /* NetworkingError.swift in Sources */,
 				7BA1131F246D7BD700BE3C05 /* GameListResponse.swift in Sources */,
 				7BA1132B246D849E00BE3C05 /* GameListViewController.swift in Sources */,
+				7BC29D91246EB0CB00F173F2 /* GameTableViewCell.swift in Sources */,
 				7BCD45C1246D473D001A50B9 /* AppDelegate.swift in Sources */,
 				7BA11305246D548F00BE3C05 /* API.swift in Sources */,
 				7BA11303246D543B00BE3C05 /* Response.swift in Sources */,
