@@ -11,6 +11,10 @@ struct GameListResponse: Decodable {
     let nextPage: String?
     let games: [Game]?
 
+    var isNextPageAvailable: Bool {
+        return nextPage != nil
+    }
+
     enum CodingKeys: String, CodingKey {
         case nextPage = "next"
         case games = "results"

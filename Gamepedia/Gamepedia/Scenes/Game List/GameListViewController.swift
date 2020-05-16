@@ -15,7 +15,7 @@ class GameListViewController: BaseViewController {
     private enum Constants {
         static let rowHeight: CGFloat = 136.0
         static let tableFooterHeight: CGFloat = 30.0
-        static let nextPageFetchThreshold = 3
+        static let nextPageFetchThreshold = 2
     }
 
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -33,6 +33,8 @@ class GameListViewController: BaseViewController {
         navigationItem.title = "GAMES"
 
         configureTableView()
+
+        searchBar.delegate = self
 
         configureViewModel()
         viewModel.reloadGames()
@@ -83,6 +85,16 @@ class GameListViewController: BaseViewController {
                 strongSelf.activityIndicatorView.startAnimating()
             case .loaded:
                 strongSelf.activityIndicatorView.stopAnimating()
+            case .dataSourceUpdated:
+                strongSelf.presentation.update(with: strongSelf.viewModel.state)
+                strongSelf.tableView.reloadData()
+                if strongSelf.viewModel.state.sourceArray.count > 0 {
+                    strongSelf.tableView.scrollToRow(
+                        at: IndexPath(row: 0, section: 0),
+                        at: .top,
+                        animated: true
+                    )
+                }
             default:
                 break
             }
@@ -127,9 +139,31 @@ extension GameListViewController: UITableViewDelegate {
         willDisplay cell: UITableViewCell,
         forRowAt indexPath: IndexPath
     ) {
-        if indexPath.row >= viewModel.state.sourceArray.count - Constants.nextPageFetchThreshold {
+        if indexPath.row == viewModel.state.sourceArray.count - Constants.nextPageFetchThreshold {
             viewModel.fetchNextPage()
         }
+    }
+
+}
+
+// MARK: - UISearchBarDelegate
+
+extension GameListViewController: UISearchBarDelegate {
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchBar.text?.isEmpty ?? true {
+            viewModel.deactivateSearch()
+        }
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count >= 3 {
+            viewModel.search(text: searchText)
+        }
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
 
 }

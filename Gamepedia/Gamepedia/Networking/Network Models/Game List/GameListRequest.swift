@@ -16,6 +16,7 @@ struct GameListRequest: GamepediaEndpoint {
         enum Parameters {
             static let pageKey = "page"
             static let pageSizeKey = "page_size"
+            static let searchKey = "search"
         }
     }
 
@@ -24,10 +25,17 @@ struct GameListRequest: GamepediaEndpoint {
     var method: HTTPMethod = .get
     var parameters: [String : Any]
 
-    init(page: Int = Constants.defaultPage, pageSize: Int = Constants.defaultPageSize) {
+    init(
+        page: Int = Constants.defaultPage,
+        pageSize: Int = Constants.defaultPageSize,
+        searchText: String? = nil
+    ) {
         parameters = [
             Constants.Parameters.pageKey: page,
             Constants.Parameters.pageSizeKey: pageSize
         ]
+        if let searchText = searchText {
+            parameters[Constants.Parameters.searchKey] = searchText
+        }
     }
 }

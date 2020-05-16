@@ -12,14 +12,57 @@ import Foundation
 
 struct GameListState {
 
-    var searchResults: [Game] = []
-    var games: [Game] = []
-    var currentGamesPage = 1
-    var currentSearchPage = 1
-    var isSearchActive = false
+    private var searchResults: [Game] = []
+    private var games: [Game] = []
+    private var currentGamesPage = 1
+    private var currentSearchPage = 1
+    private var isNextPageAvailableForGames = false
+    private var isNextPageAvailableForSearch = false
+    var searchText: String? {
+        didSet {
+            if searchText == nil {
+                searchResults = []
+            }
+        }
+    }
 
+    var isSearchActive: Bool {
+        return !(searchText?.isEmpty ?? true)
+    }
     var sourceArray: [Game] {
         return isSearchActive ? searchResults : games
+    }
+    var currentSourcePage: Int {
+        return isSearchActive ? currentSearchPage : currentGamesPage
+    }
+    var isNextPageAvailable: Bool {
+        return isSearchActive ? isNextPageAvailableForSearch : isNextPageAvailableForGames
+    }
+
+    mutating func setCurrentPage(_ page: Int, isNextPageAvailable: Bool) {
+        if isSearchActive {
+            currentSearchPage = page
+            isNextPageAvailableForSearch = isNextPageAvailable
+        } else {
+            currentGamesPage = page
+            isNextPageAvailableForGames = isNextPageAvailable
+        }
+    }
+
+    mutating func updateSourceArray(_ games: [Game], isNextPage: Bool = false) {
+        if isSearchActive {
+            if isNextPage {
+                searchResults.append(contentsOf: games)
+            } else {
+                searchResults = games
+            }
+        } else {
+            if isNextPage {
+                self.games.append(contentsOf: games)
+            } else {
+                self.games = games
+            }
+        }
     }
 
     enum Change {
@@ -46,8 +89,11 @@ class GameListViewModel {
     }
 
     private var stateChangeHandler: StateChangehandler?
-    var state = GameListState()
-    private var isOperationInProgress = false
+    private(set) var state = GameListState()
+    private var activeNetworkTask: URLSessionTask?
+    private var isOperationInProgress: Bool {
+        return activeNetworkTask != nil
+    }
 
     func addChangeHandler(handler: StateChangehandler?) {
         stateChangeHandler = handler
@@ -55,31 +101,32 @@ class GameListViewModel {
 
     func reloadGames() {
         guard !isOperationInProgress else { return }
-        fetchGames(page: 1)
+        fetchGames(page: 1, searchText: state.searchText)
     }
 
     func fetchNextPage() {
-        // TODO: fetch next search result page if search active
-        guard !isOperationInProgress else { return }
-        fetchGames(page: state.currentGamesPage + 1, isNextPage: true)
+        guard !isOperationInProgress, state.isNextPageAvailable else { return }
+        fetchGames(
+            page: state.currentSourcePage + 1,
+            isNextPage: true,
+            searchText: state.searchText
+        )
     }
 
-    func fetchGames(page: Int, isNextPage: Bool = false) {
+    func fetchGames(page: Int, isNextPage: Bool = false, searchText: String? = nil) {
         stateChangeHandler?(.loading)
-        isOperationInProgress = true
 
-        let request = GameListRequest(page: page, pageSize: Constants.pageSize)
-        NetworkManager.shared.execute(request: request) { [weak self] (responseObject: Response<GameListRequest.Response>) in
+        let request = GameListRequest(page: page, pageSize: Constants.pageSize, searchText: searchText)
+        activeNetworkTask = NetworkManager.shared.execute(request: request) { [weak self] (responseObject: Response<GameListRequest.Response>) in
             self?.stateChangeHandler?(.loaded)
-            self?.isOperationInProgress = false
+            self?.activeNetworkTask = nil
             switch responseObject.result {
             case .success(let response):
-                self?.state.currentGamesPage = page
+                self?.state.setCurrentPage(page, isNextPageAvailable: response.isNextPageAvailable)
+                self?.state.updateSourceArray(response.games ?? [], isNextPage: isNextPage)
                 if isNextPage {
-                    self?.state.games.append(contentsOf: response.games ?? [])
                     self?.stateChangeHandler?(.nextPageFetched(response.games ?? []))
                 } else {
-                    self?.state.games = response.games ?? []
                     self?.stateChangeHandler?(.gamesReloaded)
                 }
             case .failure(let error):
@@ -88,8 +135,21 @@ class GameListViewModel {
         }
     }
 
+    // MARK: - Search
+
     func search(text: String) {
-        // TODO: implementation
+        state.searchText = text
+        stateChangeHandler?(.dataSourceUpdated)
+
+        if let task = activeNetworkTask {
+            task.cancel()
+        }
+        fetchGames(page: 1, searchText: text)
+    }
+
+    func deactivateSearch() {
+        state.searchText = nil
+        stateChangeHandler?(.dataSourceUpdated)
     }
 
 }
