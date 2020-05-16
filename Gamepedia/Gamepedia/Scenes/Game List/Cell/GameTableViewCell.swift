@@ -39,6 +39,17 @@ class GameTableViewCell: UITableViewCell, NibLoadable {
         return String(describing: self)
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        gameImageView.af.cancelImageRequest()
+        gameImageView.image = nil
+        nameLabel.text = nil
+        metacriticStackView.isHidden = true
+        genreLabel.text = nil
+        contentView.backgroundColor = .white
+    }
+
     private func updateUI() {
         guard let presentation = presentation else { return }
 

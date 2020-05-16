@@ -25,7 +25,9 @@ struct GameListState {
     enum Change {
 
         case loading
-        case gamesFetched
+        case loaded
+        case gamesReloaded
+        case nextPageFetched([Game])
         case markedAsRead
         case dataSourceUpdated
         case showError(NetworkingError)
@@ -37,30 +39,49 @@ struct GameListState {
 
 class GameListViewModel {
 
-    var stateChangeHandler: ((GameListState.Change) -> Void)?
+    typealias StateChangehandler = ((GameListState.Change) -> Void)
+
+    private enum Constants {
+        static let pageSize = 20
+    }
+
+    private var stateChangeHandler: StateChangehandler?
     var state = GameListState()
+    private var isOperationInProgress = false
+
+    func addChangeHandler(handler: StateChangehandler?) {
+        stateChangeHandler = handler
+    }
 
     func reloadGames() {
+        guard !isOperationInProgress else { return }
         fetchGames(page: 1)
     }
 
     func fetchNextPage() {
         // TODO: fetch next search result page if search active
+        guard !isOperationInProgress else { return }
         fetchGames(page: state.currentGamesPage + 1, isNextPage: true)
     }
 
     func fetchGames(page: Int, isNextPage: Bool = false) {
         stateChangeHandler?(.loading)
-        let request = GameListRequest(page: page)
+        isOperationInProgress = true
+
+        let request = GameListRequest(page: page, pageSize: Constants.pageSize)
         NetworkManager.shared.execute(request: request) { [weak self] (responseObject: Response<GameListRequest.Response>) in
+            self?.stateChangeHandler?(.loaded)
+            self?.isOperationInProgress = false
             switch responseObject.result {
             case .success(let response):
+                self?.state.currentGamesPage = page
                 if isNextPage {
                     self?.state.games.append(contentsOf: response.games ?? [])
+                    self?.stateChangeHandler?(.nextPageFetched(response.games ?? []))
                 } else {
                     self?.state.games = response.games ?? []
+                    self?.stateChangeHandler?(.gamesReloaded)
                 }
-                self?.stateChangeHandler?(.gamesFetched)
             case .failure(let error):
                 self?.stateChangeHandler?(.showError(error))
             }

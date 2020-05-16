@@ -8,10 +8,14 @@
 
 import UIKit
 
+// MARK: - GameListViewController
+
 class GameListViewController: BaseViewController {
 
-    enum Constants {
+    private enum Constants {
         static let rowHeight: CGFloat = 136.0
+        static let tableFooterHeight: CGFloat = 30.0
+        static let nextPageFetchThreshold = 3
     }
 
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -19,6 +23,8 @@ class GameListViewController: BaseViewController {
 
     let viewModel = GameListViewModel()
     private var presentation = GameListViewControllerPresentation()
+    private var activityIndicatorView = UIActivityIndicatorView()
+    private var refreshControl = UIRefreshControl()
 
     // TODO: implementation
     override func viewDidLoad() {
@@ -26,30 +32,71 @@ class GameListViewController: BaseViewController {
 
         navigationItem.title = "GAMES"
 
+        configureTableView()
+
+        configureViewModel()
+        viewModel.reloadGames()
+    }
+
+    private func configureTableView() {
+        activityIndicatorView.startAnimating()
+        let footerView = UIView(
+            frame: CGRect(
+                x: 0.0,
+                y: 0.0,
+                width: tableView.bounds.width,
+                height: Constants.tableFooterHeight
+            )
+        )
+        footerView.addSubview(activityIndicatorView)
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.centerYAnchor.constraint(equalTo: footerView.centerYAnchor).isActive = true
+        activityIndicatorView.centerXAnchor.constraint(equalTo: footerView.centerXAnchor).isActive = true
+        tableView.tableFooterView = footerView
+
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(reloadUI), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+
         tableView.dataSource = self
-        tableView.tableFooterView = UIView()
+        tableView.delegate = self
         tableView.rowHeight = Constants.rowHeight
         tableView.register(
             GameTableViewCell.nib,
             forCellReuseIdentifier: GameTableViewCell.reuseIdentifier
         )
-
-        viewModel.stateChangeHandler = handleStateChange(change:)
-        viewModel.reloadGames()
     }
 
-    private func handleStateChange(change: GameListState.Change) {
-        // TODO: handle changes
-        switch change {
-        case .gamesFetched:
-            presentation.update(with: viewModel.state)
-            tableView.reloadData()
-        default:
-            break
+    private func configureViewModel() {
+        viewModel.addChangeHandler { [weak self] (change) in
+            guard let strongSelf = self else { return }
+            // TODO: handle changes
+            switch change {
+            case .nextPageFetched(let games):
+                strongSelf.presentation.updateWithNextPage(games)
+                strongSelf.tableView.reloadData()
+            case .gamesReloaded:
+                strongSelf.refreshControl.endRefreshing()
+                strongSelf.presentation.update(with: strongSelf.viewModel.state)
+                strongSelf.tableView.reloadData()
+            case .loading:
+                strongSelf.activityIndicatorView.startAnimating()
+            case .loaded:
+                strongSelf.activityIndicatorView.stopAnimating()
+            default:
+                break
+            }
         }
     }
 
+    @objc private func reloadUI() {
+        // TODO: handle search case
+        viewModel.reloadGames()
+    }
+
 }
+
+// MARK: - UITableViewDataSource
 
 extension GameListViewController: UITableViewDataSource {
 
@@ -67,6 +114,22 @@ extension GameListViewController: UITableViewDataSource {
         cell.presentation = presentation.presentations[indexPath.row]
 
         return cell
+    }
+
+}
+
+// MARK: - UITableViewDelegate
+
+extension GameListViewController: UITableViewDelegate {
+
+    func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
+        if indexPath.row >= viewModel.state.sourceArray.count - Constants.nextPageFetchThreshold {
+            viewModel.fetchNextPage()
+        }
     }
 
 }
