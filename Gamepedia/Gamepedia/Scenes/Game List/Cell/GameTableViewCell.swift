@@ -14,7 +14,7 @@ struct GameTableViewCellPresentation {
     let gameImagePath: String?
     let name: String?
     let metacriticScore: Int?
-    let genres: [Genre]?
+    let genres: [String]?
     var isReaded: Bool = false
 
 }
@@ -35,6 +35,10 @@ class GameTableViewCell: UITableViewCell, NibLoadable {
         }
     }
 
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+
     private func updateUI() {
         guard let presentation = presentation else { return }
 
@@ -51,10 +55,9 @@ class GameTableViewCell: UITableViewCell, NibLoadable {
             metacriticStackView.isHidden = true
         }
 
-        backgroundColor = presentation.isReaded ? .gray224 : .white
+        contentView.backgroundColor = presentation.isReaded ? .gray224 : .white
 
-        // TODO: add genres
-        // TODO: handle readed case
+        genreLabel.text = presentation.genres?.joined(separator: ", ")
     }
 
 }

@@ -18,6 +18,10 @@ struct GameListState {
     var currentSearchPage = 1
     var isSearchActive = false
 
+    var sourceArray: [Game] {
+        return isSearchActive ? searchResults : games
+    }
+
     enum Change {
 
         case loading

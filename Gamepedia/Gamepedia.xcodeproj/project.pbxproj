@@ -30,6 +30,9 @@
 		7BC29D8D246E949C00F173F2 /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29D8C246E949C00F173F2 /* GameListViewModel.swift */; };
 		7BC29D91246EB0CB00F173F2 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29D90246EB0CB00F173F2 /* GameTableViewCell.swift */; };
 		7BC29D93246EB0EF00F173F2 /* GameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BC29D92246EB0EF00F173F2 /* GameTableViewCell.xib */; };
+		7BC29D96246ED16B00F173F2 /* GameListViewControllerPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29D95246ED16B00F173F2 /* GameListViewControllerPresentation.swift */; };
+		7BC29D98246EF0FC00F173F2 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BC29D97246EF0FC00F173F2 /* AlamofireImage.framework */; };
+		7BC29D99246EF0FC00F173F2 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7BC29D97246EF0FC00F173F2 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7BCD45C1246D473D001A50B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45C0246D473D001A50B9 /* AppDelegate.swift */; };
 		7BCD45CA246D473D001A50B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45C9246D473D001A50B9 /* Assets.xcassets */; };
 		7BCD45CD246D473D001A50B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45CB246D473D001A50B9 /* LaunchScreen.storyboard */; };
@@ -44,6 +47,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7BA112FD246D538800BE3C05 /* Alamofire.framework in Embed Frameworks */,
+				7BC29D99246EF0FC00F173F2 /* AlamofireImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +78,8 @@
 		7BC29D8C246E949C00F173F2 /* GameListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
 		7BC29D90246EB0CB00F173F2 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		7BC29D92246EB0EF00F173F2 /* GameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameTableViewCell.xib; sourceTree = "<group>"; };
+		7BC29D95246ED16B00F173F2 /* GameListViewControllerPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewControllerPresentation.swift; sourceTree = "<group>"; };
+		7BC29D97246EF0FC00F173F2 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		7BCD45BD246D473D001A50B9 /* Gamepedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gamepedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BCD45C0246D473D001A50B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BCD45C9246D473D001A50B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BA112FC246D538800BE3C05 /* Alamofire.framework in Frameworks */,
+				7BC29D98246EF0FC00F173F2 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +104,7 @@
 		7BA112F6246D537000BE3C05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BC29D97246EF0FC00F173F2 /* AlamofireImage.framework */,
 				7BA112FB246D538800BE3C05 /* Alamofire.framework */,
 				7BA112F7246D537000BE3C05 /* Alamofire */,
 			);
@@ -175,6 +183,7 @@
 				7BA1132A246D849E00BE3C05 /* GameListViewController.swift */,
 				7BA11333246D863100BE3C05 /* GameListViewController.storyboard */,
 				7BC29D8C246E949C00F173F2 /* GameListViewModel.swift */,
+				7BC29D95246ED16B00F173F2 /* GameListViewControllerPresentation.swift */,
 			);
 			path = "Game List";
 			sourceTree = "<group>";
@@ -353,6 +362,7 @@
 				7BC29D8B246E85B700F173F2 /* UIColor+Gamepedia.swift in Sources */,
 				7BA11329246D848B00BE3C05 /* FavoritesViewController.swift in Sources */,
 				7BA11337246D86B600BE3C05 /* BaseViewController.swift in Sources */,
+				7BC29D96246ED16B00F173F2 /* GameListViewControllerPresentation.swift in Sources */,
 				7BA11325246D822B00BE3C05 /* TabBarController.swift in Sources */,
 				7BA11307246D54B200BE3C05 /* BaseURL.swift in Sources */,
 				7BA11316246D5F4600BE3C05 /* GlobalVariables.swift in Sources */,

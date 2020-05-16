@@ -15,13 +15,36 @@
                     <view key="view" contentMode="scaleToFill" id="ZpI-Jf-KtX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ctK-BO-med">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Wnc-jq-Uao">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QW8-ji-JsC" firstAttribute="bottom" secondItem="ctK-BO-med" secondAttribute="bottom" id="1Wc-vR-qaL"/>
+                            <constraint firstItem="Wnc-jq-Uao" firstAttribute="leading" secondItem="QW8-ji-JsC" secondAttribute="leading" id="CL3-0r-Q14"/>
+                            <constraint firstItem="Wnc-jq-Uao" firstAttribute="trailing" secondItem="QW8-ji-JsC" secondAttribute="trailing" id="KYG-jh-sRr"/>
+                            <constraint firstItem="Wnc-jq-Uao" firstAttribute="top" secondItem="QW8-ji-JsC" secondAttribute="top" id="McX-dY-DSt"/>
+                            <constraint firstItem="ctK-BO-med" firstAttribute="leading" secondItem="QW8-ji-JsC" secondAttribute="leading" id="Vhv-U0-Z6F"/>
+                            <constraint firstItem="ctK-BO-med" firstAttribute="top" secondItem="Wnc-jq-Uao" secondAttribute="bottom" id="b33-Pz-nCe"/>
+                            <constraint firstItem="QW8-ji-JsC" firstAttribute="trailing" secondItem="ctK-BO-med" secondAttribute="trailing" id="eQt-rs-zTR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QW8-ji-JsC"/>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="Wnc-jq-Uao" id="3bs-ll-nyp"/>
+                        <outlet property="tableView" destination="ctK-BO-med" id="5y7-Fw-Vtx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U7X-4D-WSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-125" y="98"/>
+            <point key="canvasLocation" x="-126.08695652173914" y="97.767857142857139"/>
         </scene>
     </scenes>
 </document>
