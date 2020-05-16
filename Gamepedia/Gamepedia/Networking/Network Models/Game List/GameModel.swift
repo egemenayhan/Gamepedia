@@ -8,6 +8,7 @@
 
 struct Game: Decodable {
 
+    let id: Int
     let name: String?
     let metacritic: Int?
     let imagePath: String?
@@ -17,7 +18,7 @@ struct Game: Decodable {
     let genres: [String]?
 
     enum CodingKeys: String, CodingKey {
-        case name, metacritic, description, genres
+        case name, metacritic, description, genres, id
         case websitePath = "website"
         case imagePath = "background_image"
         case redditPath = "reddit_url"
@@ -26,6 +27,7 @@ struct Game: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
+        id = try container.decode(Int.self, forKey: .id)
         name = try? container.decode(String.self, forKey: .name)
         metacritic = try? container.decode(Int.self, forKey: .metacritic)
         description = try? container.decode(String.self, forKey: .description)

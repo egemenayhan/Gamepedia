@@ -8,6 +8,10 @@
 
 import UIKit
 
+// MARK: - GameListRouter
+
+struct GameListRouter: GameDetailRoutable {}
+
 // MARK: - GameListViewController
 
 class GameListViewController: BaseViewController {
@@ -25,6 +29,7 @@ class GameListViewController: BaseViewController {
     private var presentation = GameListViewControllerPresentation()
     private var activityIndicatorView = UIActivityIndicatorView()
     private var refreshControl = UIRefreshControl()
+    private let router = GameListRouter()
 
     // TODO: implementation
     override func viewDidLoad() {
@@ -142,6 +147,11 @@ extension GameListViewController: UITableViewDelegate {
         if indexPath.row == viewModel.state.sourceArray.count - Constants.nextPageFetchThreshold {
             viewModel.fetchNextPage()
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let game = viewModel.state.sourceArray[indexPath.row]
+        router.routeToGameDetail(from: self, game: game)
     }
 
 }

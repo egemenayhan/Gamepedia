@@ -39,6 +39,12 @@ class GameTableViewCell: UITableViewCell, NibLoadable {
         return String(describing: self)
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        selectionStyle = .none
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
 
