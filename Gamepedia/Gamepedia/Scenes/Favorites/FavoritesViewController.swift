@@ -99,7 +99,19 @@ extension FavoritesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Unfavorite") { [weak self] (action, indexPath) in
-            self?.viewModel.unfavoriteGame(at: indexPath.row)
+            let alertController = UIAlertController(
+                title: "Warning!",
+                message:"This game will be removed from your favorite list. Are you sure?",
+                preferredStyle: .alert
+            )
+            alertController.addAction(
+                UIAlertAction(title: "Yes", style: .destructive) { (action) in
+                    self?.viewModel.unfavoriteGame(at: indexPath.row)
+                }
+            )
+            alertController.addAction(UIAlertAction(title: "No", style: .cancel))
+
+            self?.present(alertController, animated: true, completion: nil)
         }
 
         return [deleteAction]
