@@ -25,13 +25,11 @@ struct GameListState {
             }
         }
     }
+    var isSearchActive: Bool = false
 
-    var isSearchActive: Bool {
-        return !(searchText?.isEmpty ?? true)
-    }
     var sourceArray: [Game] {
-        let array = isSearchActive ? searchResults : games
-        return array.count > 0 ? array : savedGames
+        let gameSource = games.count > 0 ? games : savedGames
+        return isSearchActive ? searchResults : gameSource
     }
     var currentSourcePage: Int {
         return isSearchActive ? currentSearchPage : currentGamesPage
@@ -111,7 +109,10 @@ class GameListViewModel {
     }
 
     func reloadGames() {
-        guard !isOperationInProgress else { return }
+        guard !isOperationInProgress, (!state.isSearchActive || (state.searchText?.count ?? 0 >= Global.minimumCharacterCountForSearch)) else {
+            stateChangeHandler?(.loaded)
+            return
+        }
         fetchGames(page: 1, searchText: state.searchText)
     }
 
@@ -149,7 +150,7 @@ class GameListViewModel {
     // MARK: - Search
 
     func search(text: String) {
-        state.searchText = text
+        state.searchText = text.lowercased()
         stateChangeHandler?(.dataSourceUpdated)
 
         if let task = activeNetworkTask {
@@ -158,8 +159,9 @@ class GameListViewModel {
         fetchGames(page: 1, searchText: text)
     }
 
-    func deactivateSearch() {
-        state.searchText = nil
+    func enableSearch(_ isEnabled: Bool) {
+        state.isSearchActive = isEnabled
+        state.searchText = isEnabled ? "" : nil
         stateChangeHandler?(.dataSourceUpdated)
     }
 

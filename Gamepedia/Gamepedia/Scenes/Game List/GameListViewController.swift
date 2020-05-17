@@ -139,6 +139,16 @@ class GameListViewController: BaseViewController {
         viewModel.reloadGames()
     }
 
+    private func showEmptyViewIfNeeded() {
+        if viewModel.state.isSearchActive, (searchBar.text?.count ?? 0) < Global.minimumCharacterCountForSearch {
+            let emptyView = EmptyTableViewBackgroundView(frame: tableView.bounds)
+            emptyView.titleLabel.text = "No game has been searched."
+            tableView.backgroundView = emptyView
+        } else {
+            tableView.backgroundView = nil
+        }
+    }
+
 }
 
 // MARK: - UITableViewDataSource
@@ -188,16 +198,22 @@ extension GameListViewController: UITableViewDelegate {
 
 extension GameListViewController: UISearchBarDelegate {
 
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        viewModel.enableSearch(true)
+        showEmptyViewIfNeeded()
+    }
+
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if searchBar.text?.isEmpty ?? true {
-            viewModel.deactivateSearch()
+            viewModel.enableSearch(false)
         }
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count >= 3 {
+        if searchText.count >= Global.minimumCharacterCountForSearch {
             viewModel.search(text: searchText)
         }
+        showEmptyViewIfNeeded()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

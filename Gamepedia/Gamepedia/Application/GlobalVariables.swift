@@ -18,6 +18,8 @@ struct Global {
     // TODO: update according to build configuration
     private(set) static var environment: Environment = .prod
 
+    static let minimumCharacterCountForSearch = 3
+
     enum NotificationInfoKeys {
         case gameID
     }

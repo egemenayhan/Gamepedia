@@ -43,6 +43,7 @@
 		7BC29DAE2471635C00F173F2 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DAD2471635C00F173F2 /* UserDefaultsManager.swift */; };
 		7BC29DB0247183B100F173F2 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DAF247183B100F173F2 /* FavoritesViewModel.swift */; };
 		7BC29DB2247193DA00F173F2 /* FavoritesViewControllerPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DB1247193DA00F173F2 /* FavoritesViewControllerPresentation.swift */; };
+		7BC29DB52471A65900F173F2 /* EmptyTableViewBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DB42471A65900F173F2 /* EmptyTableViewBackgroundView.swift */; };
 		7BCD45C1246D473D001A50B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45C0246D473D001A50B9 /* AppDelegate.swift */; };
 		7BCD45CA246D473D001A50B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45C9246D473D001A50B9 /* Assets.xcassets */; };
 		7BCD45CD246D473D001A50B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45CB246D473D001A50B9 /* LaunchScreen.storyboard */; };
@@ -100,6 +101,7 @@
 		7BC29DAD2471635C00F173F2 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		7BC29DAF247183B100F173F2 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		7BC29DB1247193DA00F173F2 /* FavoritesViewControllerPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewControllerPresentation.swift; sourceTree = "<group>"; };
+		7BC29DB42471A65900F173F2 /* EmptyTableViewBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewBackgroundView.swift; sourceTree = "<group>"; };
 		7BCD45BD246D473D001A50B9 /* Gamepedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gamepedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BCD45C0246D473D001A50B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BCD45C9246D473D001A50B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 		7BA11326246D845D00BE3C05 /* Game List */ = {
 			isa = PBXGroup;
 			children = (
+				7BC29DB32471A62400F173F2 /* EmptyView */,
 				7BC29D8E246EB08000F173F2 /* Cell */,
 				7BA11333246D863100BE3C05 /* GameListViewController.storyboard */,
 				7BA1132A246D849E00BE3C05 /* GameListViewController.swift */,
@@ -278,6 +281,14 @@
 				7BC29DAB24712EC700F173F2 /* GameDetailsRequest.swift */,
 			);
 			path = "Game Details";
+			sourceTree = "<group>";
+		};
+		7BC29DB32471A62400F173F2 /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				7BC29DB42471A65900F173F2 /* EmptyTableViewBackgroundView.swift */,
+			);
+			path = EmptyView;
 			sourceTree = "<group>";
 		};
 		7BCD45B4246D473D001A50B9 = {
@@ -421,6 +432,7 @@
 				7BA11330246D85C800BE3C05 /* Instantiatable.swift in Sources */,
 				7BA11320246D7BD700BE3C05 /* GameModel.swift in Sources */,
 				7BA11301246D541700BE3C05 /* Endpoint.swift in Sources */,
+				7BC29DB52471A65900F173F2 /* EmptyTableViewBackgroundView.swift in Sources */,
 				7BC29DA9247039A000F173F2 /* UIImage+Gamepedia.swift in Sources */,
 				7BA1130B246D580500BE3C05 /* NetworkingError.swift in Sources */,
 				7BC29DB2247193DA00F173F2 /* FavoritesViewControllerPresentation.swift in Sources */,
