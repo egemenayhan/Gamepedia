@@ -43,7 +43,18 @@ class GameDetailViewModel {
     }
 
     func fetchGameDetails() {
-        // TODO: implementation
+        stateChangeHandler?(.loading)
+        let request = GameDetailsRequest(gameID: state.gameID)
+        NetworkManager.shared.execute(request: request) { [weak self] (responseObject: Response<GameDetailsRequest.Response>) in
+            self?.stateChangeHandler?(.loaded)
+            switch responseObject.result {
+            case .success(let game):
+                self?.state.game = game
+                self?.stateChangeHandler?(.gameDetailsFetched)
+            case .failure(let error):
+                self?.stateChangeHandler?(.showError(error))
+            }
+        }
     }
 
 }

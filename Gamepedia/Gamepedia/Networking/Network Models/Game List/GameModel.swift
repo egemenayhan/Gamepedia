@@ -6,13 +6,15 @@
 //  Copyright © 2020 Egemen Ayhan. All rights reserved.
 //
 
+import Foundation
+
 struct Game: Decodable {
 
     let id: Int
     let name: String?
     let metacritic: Int?
     let imagePath: String?
-    let description: String?
+    var description: NSAttributedString? = nil
     let redditPath: String?
     let websitePath: String?
     let genres: [String]?
@@ -30,7 +32,16 @@ struct Game: Decodable {
         id = try container.decode(Int.self, forKey: .id)
         name = try? container.decode(String.self, forKey: .name)
         metacritic = try? container.decode(Int.self, forKey: .metacritic)
-        description = try? container.decode(String.self, forKey: .description)
+        if let htmlText = try? container.decode(String.self, forKey: .description) {
+            let data = Data(htmlText.utf8)
+            if let attributedString = try? NSAttributedString(
+                data: data,
+                options: [.documentType: NSAttributedString.DocumentType.html],
+                documentAttributes: nil
+            ) {
+                description = attributedString
+            }
+        }
         imagePath = try? container.decode(String.self, forKey: .imagePath)
         websitePath = try? container.decode(String.self, forKey: .websitePath)
         redditPath = try? container.decode(String.self, forKey: .redditPath)

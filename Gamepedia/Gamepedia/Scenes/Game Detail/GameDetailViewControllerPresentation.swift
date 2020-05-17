@@ -6,11 +6,13 @@
 //  Copyright © 2020 Egemen Ayhan. All rights reserved.
 //
 
+import Foundation
+
 struct GameDetailViewControllerPresentation {
 
     var gameImagePath: String?
     var name: String?
-    var description: String?
+    var description: NSAttributedString?
     var redditPath: String?
     var websitePath: String?
     var isFavorite: Bool = false
