@@ -19,7 +19,10 @@ extension GameDetailRoutable {
     func routeToGameDetail(from context: BaseViewController, game: Game) {
         let detailVC = GameDetailViewController.instantiate()
         detailVC.viewModel = GameDetailViewModel(gameID: game.id, game: game)
-        detailVC.presentation = GameDetailViewControllerPresentation(game: game, isFavorite: false)
+        detailVC.presentation = GameDetailViewControllerPresentation(
+            game: game,
+            isFavorite: UserDefaultsManager.shared.isFavorite(gameID: game.id)
+        )
         context.navigationController?.pushViewController(detailVC, animated: true)
     }
 

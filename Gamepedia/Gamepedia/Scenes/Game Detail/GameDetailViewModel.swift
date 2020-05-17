@@ -14,12 +14,15 @@ struct GameDetailState {
 
     var gameID: Int
     var game: Game?
-    var isFavorite = false
+    var isFavorite: Bool {
+        return UserDefaultsManager.shared.isFavorite(gameID: gameID)
+    }
 
     enum Change {
         case loading
         case loaded
         case gameDetailsFetched
+        case favoriteStateUpdated
         case showError(NetworkingError)
     }
 
@@ -55,6 +58,11 @@ class GameDetailViewModel {
                 self?.stateChangeHandler?(.showError(error))
             }
         }
+    }
+
+    func toggleFavoriteState() {
+        UserDefaultsManager.shared.toggleFavoriteState(for: state.gameID)
+        stateChangeHandler?(.favoriteStateUpdated)
     }
 
 }

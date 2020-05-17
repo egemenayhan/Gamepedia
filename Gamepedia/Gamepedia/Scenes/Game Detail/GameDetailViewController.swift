@@ -61,7 +61,11 @@ class GameDetailViewController: BaseViewController {
             case .gameDetailsFetched:
                 strongSelf.presentation.update(with: strongSelf.viewModel.state)
                 strongSelf.updateUI()
-            default:
+            case .favoriteStateUpdated:
+                strongSelf.presentation.update(with: strongSelf.viewModel.state)
+                strongSelf.updateFavoriteState()
+            case .showError(_):
+                // TODO: handle error
                 break
             }
         }
@@ -93,10 +97,7 @@ class GameDetailViewController: BaseViewController {
     }
 
     private func updateUI() {
-        favoriteButton.setTitle(
-            presentation.isFavorite ? "Unfavorite" : "Favorite",
-            for: .normal
-        )
+        updateFavoriteState()
 
         if let imageURL = URL(string: presentation.gameImagePath ?? "") {
             imageView.af.setImage(withURL: imageURL)
@@ -129,6 +130,13 @@ class GameDetailViewController: BaseViewController {
         websiteContainerStackView.isHidden = presentation.redditPath?.isEmpty ?? true
     }
 
+    private func updateFavoriteState() {
+        favoriteButton.setTitle(
+            presentation.isFavorite ? "Unfavorite" : "Favorite",
+            for: .normal
+        )
+    }
+
     // MARK: - Actions
 
     @IBAction private func visitRedditTapped(_ sender: Any) {
@@ -142,11 +150,10 @@ class GameDetailViewController: BaseViewController {
     }
 
     @objc private func favoriteTapeed(_ sender: Any) {
-        presentation.isFavorite.toggle()
-        updateUI()
+        viewModel.toggleFavoriteState()
     }
 
-    @IBAction func expandTextTapped(_ sender: Any) {
+    @IBAction private func expandTextTapped(_ sender: Any) {
         expandTextButton.isSelected.toggle()
         descriptionLabel.numberOfLines = expandTextButton.isSelected ? 0 : Constants.descriptionNumberOfLine
     }
