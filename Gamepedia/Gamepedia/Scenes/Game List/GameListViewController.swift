@@ -34,7 +34,7 @@ class GameListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "GAMES"
+        navigationItem.title = "Games"
 
         NotificationCenter.default.addObserver(
             self,
@@ -48,6 +48,7 @@ class GameListViewController: BaseViewController {
         searchBar.delegate = self
 
         configureViewModel()
+        preloadContent()
         viewModel.reloadGames()
     }
 
@@ -59,6 +60,11 @@ class GameListViewController: BaseViewController {
     @objc private func gameMarkedAsRead(_ notification: Notification) {
         guard let gameID = notification.userInfo?[Global.NotificationInfoKeys.gameID] as? Int else { return }
         viewModel.gameSetAsReaded(gameID: gameID)
+    }
+
+    private func preloadContent() {
+        presentation.update(with: viewModel.state)
+        tableView.reloadData()
     }
 
     private func configureTableView() {
@@ -106,6 +112,7 @@ class GameListViewController: BaseViewController {
                 strongSelf.activityIndicatorView.startAnimating()
             case .loaded:
                 strongSelf.activityIndicatorView.stopAnimating()
+                strongSelf.refreshControl.endRefreshing()
             case .dataSourceUpdated:
                 strongSelf.presentation.update(with: strongSelf.viewModel.state)
                 strongSelf.tableView.reloadData()

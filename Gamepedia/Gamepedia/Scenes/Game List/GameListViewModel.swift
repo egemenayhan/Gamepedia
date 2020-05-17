@@ -30,13 +30,17 @@ struct GameListState {
         return !(searchText?.isEmpty ?? true)
     }
     var sourceArray: [Game] {
-        return isSearchActive ? searchResults : games
+        let array = isSearchActive ? searchResults : games
+        return array.count > 0 ? array : savedGames
     }
     var currentSourcePage: Int {
         return isSearchActive ? currentSearchPage : currentGamesPage
     }
     var isNextPageAvailable: Bool {
         return isSearchActive ? isNextPageAvailableForSearch : isNextPageAvailableForGames
+    }
+    var savedGames: [Game] {
+        return UserDefaultsManager.shared.gameList
     }
 
     mutating func setCurrentPage(_ page: Int, isNextPageAvailable: Bool) {
@@ -62,6 +66,7 @@ struct GameListState {
             } else {
                 self.games = games
             }
+            UserDefaultsManager.shared.save(games: self.games)
         }
     }
 
