@@ -41,6 +41,8 @@
 		7BC29DA9247039A000F173F2 /* UIImage+Gamepedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DA8247039A000F173F2 /* UIImage+Gamepedia.swift */; };
 		7BC29DAC24712EC700F173F2 /* GameDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DAB24712EC700F173F2 /* GameDetailsRequest.swift */; };
 		7BC29DAE2471635C00F173F2 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DAD2471635C00F173F2 /* UserDefaultsManager.swift */; };
+		7BC29DB0247183B100F173F2 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DAF247183B100F173F2 /* FavoritesViewModel.swift */; };
+		7BC29DB2247193DA00F173F2 /* FavoritesViewControllerPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DB1247193DA00F173F2 /* FavoritesViewControllerPresentation.swift */; };
 		7BCD45C1246D473D001A50B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45C0246D473D001A50B9 /* AppDelegate.swift */; };
 		7BCD45CA246D473D001A50B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45C9246D473D001A50B9 /* Assets.xcassets */; };
 		7BCD45CD246D473D001A50B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45CB246D473D001A50B9 /* LaunchScreen.storyboard */; };
@@ -96,6 +98,8 @@
 		7BC29DA8247039A000F173F2 /* UIImage+Gamepedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gamepedia.swift"; sourceTree = "<group>"; };
 		7BC29DAB24712EC700F173F2 /* GameDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsRequest.swift; sourceTree = "<group>"; };
 		7BC29DAD2471635C00F173F2 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		7BC29DAF247183B100F173F2 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		7BC29DB1247193DA00F173F2 /* FavoritesViewControllerPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewControllerPresentation.swift; sourceTree = "<group>"; };
 		7BCD45BD246D473D001A50B9 /* Gamepedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gamepedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BCD45C0246D473D001A50B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BCD45C9246D473D001A50B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 			children = (
 				7BA11328246D848B00BE3C05 /* FavoritesViewController.swift */,
 				7BA11331246D861F00BE3C05 /* FavoritesViewController.storyboard */,
+				7BC29DAF247183B100F173F2 /* FavoritesViewModel.swift */,
+				7BC29DB1247193DA00F173F2 /* FavoritesViewControllerPresentation.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BC29DB0247183B100F173F2 /* FavoritesViewModel.swift in Sources */,
 				7BA11313246D5E9300BE3C05 /* GamepediaEndpoint.swift in Sources */,
 				7BCD45D7246D52F1001A50B9 /* NetworkManager.swift in Sources */,
 				7BC29DAC24712EC700F173F2 /* GameDetailsRequest.swift in Sources */,
@@ -416,6 +423,7 @@
 				7BA11301246D541700BE3C05 /* Endpoint.swift in Sources */,
 				7BC29DA9247039A000F173F2 /* UIImage+Gamepedia.swift in Sources */,
 				7BA1130B246D580500BE3C05 /* NetworkingError.swift in Sources */,
+				7BC29DB2247193DA00F173F2 /* FavoritesViewControllerPresentation.swift in Sources */,
 				7BA1131F246D7BD700BE3C05 /* GameListResponse.swift in Sources */,
 				7BA1132B246D849E00BE3C05 /* GameListViewController.swift in Sources */,
 				7BC29D91246EB0CB00F173F2 /* GameTableViewCell.swift in Sources */,

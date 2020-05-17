@@ -71,8 +71,10 @@ struct Game: Codable {
         try? container.encode(imagePath, forKey: .imagePath)
         try? container.encode(redditPath, forKey: .redditPath)
         try? container.encode(websitePath, forKey: .websitePath)
-        try? container.encode(genres, forKey: .genres)
         try? container.encode(htmlDescription, forKey: .description)
+
+        let genreObjects = genres?.map({ Genre(name: $0) })
+        try? container.encode(genreObjects, forKey: .genres)
     }
 
 }
