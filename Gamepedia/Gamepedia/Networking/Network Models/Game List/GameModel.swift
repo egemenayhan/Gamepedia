@@ -92,5 +92,6 @@ struct GameTrackingInfo: Codable {
     var gameID: Int
     var isReaded: Bool
     var isFavorite: Bool
+    var game: Game?
 
 }

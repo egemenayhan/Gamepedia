@@ -54,7 +54,7 @@ class GameDetailViewModel {
             case .success(let game):
                 self?.state.game = game
                 self?.stateChangeHandler?(.gameDetailsFetched)
-                UserDefaultsManager.shared.setAsRead(gameID: game.id)
+                UserDefaultsManager.shared.setAsRead(game: game)
             case .failure(let error):
                 self?.stateChangeHandler?(.showError(error))
             }
@@ -62,7 +62,8 @@ class GameDetailViewModel {
     }
 
     func toggleFavoriteState() {
-        UserDefaultsManager.shared.toggleFavoriteState(for: state.gameID)
+        guard let game = state.game else { return }
+        UserDefaultsManager.shared.toggleFavoriteState(for: game)
         stateChangeHandler?(.favoriteStateUpdated)
     }
 

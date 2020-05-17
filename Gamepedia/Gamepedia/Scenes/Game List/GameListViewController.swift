@@ -118,7 +118,10 @@ class GameListViewController: BaseViewController {
                 }
             case .gameSetAsReaded(let index):
                 strongSelf.presentation.gameSetAsReaded(at: index)
-                strongSelf.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                strongSelf.tableView.reloadRows(
+                    at: [IndexPath(row: index, section: 0)],
+                    with: .automatic
+                )
             default:
                 break
             }

@@ -135,6 +135,7 @@ class GameDetailViewController: BaseViewController {
             presentation.isFavorite ? "Unfavorite" : "Favorite",
             for: .normal
         )
+        favoriteButton.isHidden = viewModel.state.game == nil
     }
 
     // MARK: - Actions

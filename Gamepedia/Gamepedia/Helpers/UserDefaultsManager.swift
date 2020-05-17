@@ -48,20 +48,25 @@ class UserDefaultsManager {
 
     // MARK: - Favoorite operations
 
-    func toggleFavoriteState(for gameID: Int) {
-        if let index = gameTrackingInfos.firstIndex(where: { $0.gameID == gameID }) {
+    func toggleFavoriteState(for game: Game) {
+        if let index = gameTrackingInfos.firstIndex(where: { $0.gameID == game.id }) {
             var info = gameTrackingInfos[index]
             info.isFavorite.toggle()
             gameTrackingInfos[index] = info
         } else {
-            let info = GameTrackingInfo(gameID: gameID, isReaded: false, isFavorite: true)
+            let info = GameTrackingInfo(
+                gameID: game.id,
+                isReaded: false,
+                isFavorite: true,
+                game: game
+            )
             gameTrackingInfos.append(info)
         }
         saveGameTrackingInfos()
         NotificationCenter.default.post(
             name: .favoriteStateUpdatedNotification,
             object: nil,
-            userInfo: [Global.NotificationInfoKeys.gameID: gameID]
+            userInfo: [Global.NotificationInfoKeys.gameID: game.id]
         )
     }
 
@@ -71,21 +76,26 @@ class UserDefaultsManager {
 
     // MARK: - Read operations
 
-    func setAsRead(gameID: Int) {
-        if let index = gameTrackingInfos.firstIndex(where: { $0.gameID == gameID }) {
+    func setAsRead(game: Game) {
+        if let index = gameTrackingInfos.firstIndex(where: { $0.gameID == game.id }) {
             var info = gameTrackingInfos[index]
             guard info.isReaded != true else { return }
             info.isReaded = true
             gameTrackingInfos[index] = info
         } else {
-            let info = GameTrackingInfo(gameID: gameID, isReaded: true, isFavorite: false)
+            let info = GameTrackingInfo(
+                gameID: game.id,
+                isReaded: true,
+                isFavorite: false,
+                game: game
+            )
             gameTrackingInfos.append(info)
         }
         saveGameTrackingInfos()
         NotificationCenter.default.post(
             name: .markedAsReadNotification,
             object: nil,
-            userInfo: [Global.NotificationInfoKeys.gameID: gameID]
+            userInfo: [Global.NotificationInfoKeys.gameID: game.id]
         )
     }
 
