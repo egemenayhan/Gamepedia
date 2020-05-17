@@ -31,11 +31,17 @@ class GameListViewController: BaseViewController {
     private var refreshControl = UIRefreshControl()
     private let router = GameListRouter()
 
-    // TODO: implementation
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "GAMES"
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(gameMarkedAsRead(_:)),
+            name: .markedAsReadNotification,
+            object: nil
+        )
 
         configureTableView()
 
@@ -43,6 +49,16 @@ class GameListViewController: BaseViewController {
 
         configureViewModel()
         viewModel.reloadGames()
+    }
+
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc private func gameMarkedAsRead(_ notification: Notification) {
+        guard let gameID = notification.userInfo?[Global.NotificationInfoKeys.gameID] as? Int else { return }
+        viewModel.gameSetAsReaded(gameID: gameID)
     }
 
     private func configureTableView() {
@@ -100,6 +116,9 @@ class GameListViewController: BaseViewController {
                         animated: true
                     )
                 }
+            case .gameSetAsReaded(let index):
+                strongSelf.presentation.gameSetAsReaded(at: index)
+                strongSelf.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
             default:
                 break
             }
@@ -107,7 +126,6 @@ class GameListViewController: BaseViewController {
     }
 
     @objc private func reloadUI() {
-        // TODO: handle search case
         viewModel.reloadGames()
     }
 

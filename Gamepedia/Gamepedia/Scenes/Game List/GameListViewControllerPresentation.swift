@@ -19,7 +19,7 @@ struct GameListViewControllerPresentation {
                 name: $0.name,
                 metacriticScore: $0.metacritic,
                 genres: $0.genres,
-                isReaded: false // TODO: fix
+                isReaded: $0.isReaded
             )
         }
     }
@@ -32,9 +32,16 @@ struct GameListViewControllerPresentation {
                     name: game.name,
                     metacriticScore: game.metacritic,
                     genres: game.genres,
-                    isReaded: false // TODO: fix
+                    isReaded: game.isReaded
                 )
             )
         }
     }
+
+    mutating func gameSetAsReaded(at index: Int) {
+        var presentation = presentations[index]
+        presentation.isReaded = true
+        presentations[index] = presentation
+    }
+
 }

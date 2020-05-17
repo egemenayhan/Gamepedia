@@ -73,6 +73,7 @@ struct GameListState {
         case nextPageFetched([Game])
         case markedAsRead
         case dataSourceUpdated
+        case gameSetAsReaded(atIndex: Int)
         case showError(NetworkingError)
     }
 
@@ -97,6 +98,11 @@ class GameListViewModel {
 
     func addChangeHandler(handler: StateChangehandler?) {
         stateChangeHandler = handler
+    }
+
+    func gameSetAsReaded(gameID: Int) {
+        guard let gameIndex = state.sourceArray.firstIndex(where: { $0.id == gameID }) else { return }
+        stateChangeHandler?(.gameSetAsReaded(atIndex: gameIndex))
     }
 
     func reloadGames() {

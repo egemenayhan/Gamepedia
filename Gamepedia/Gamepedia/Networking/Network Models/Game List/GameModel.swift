@@ -22,6 +22,13 @@ struct Game: Codable {
     let websitePath: String?
     let genres: [String]?
 
+    var isFavorite: Bool {
+        return UserDefaultsManager.shared.isFavorite(gameID: id)
+    }
+    var isReaded: Bool {
+        return UserDefaultsManager.shared.isReaded(gameID: id)
+    }
+
     enum CodingKeys: String, CodingKey {
         case name, metacritic, description, genres, id
         case websitePath = "website"

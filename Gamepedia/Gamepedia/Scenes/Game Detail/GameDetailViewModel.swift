@@ -54,6 +54,7 @@ class GameDetailViewModel {
             case .success(let game):
                 self?.state.game = game
                 self?.stateChangeHandler?(.gameDetailsFetched)
+                UserDefaultsManager.shared.setAsRead(gameID: game.id)
             case .failure(let error):
                 self?.stateChangeHandler?(.showError(error))
             }
