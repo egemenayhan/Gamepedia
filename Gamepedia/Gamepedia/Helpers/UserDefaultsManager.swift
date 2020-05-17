@@ -56,8 +56,13 @@ class UserDefaultsManager {
         } else {
             let info = GameTrackingInfo(gameID: gameID, isReaded: false, isFavorite: true)
             gameTrackingInfos.append(info)
-            saveGameTrackingInfos()
         }
+        saveGameTrackingInfos()
+        NotificationCenter.default.post(
+            name: .favoriteStateUpdatedNotification,
+            object: nil,
+            userInfo: [Global.NotificationInfoKeys.gameID: gameID]
+        )
     }
 
     func isFavorite(gameID: Int) -> Bool {
@@ -69,13 +74,23 @@ class UserDefaultsManager {
     func setAsRead(gameID: Int) {
         if let index = gameTrackingInfos.firstIndex(where: { $0.gameID == gameID }) {
             var info = gameTrackingInfos[index]
-            info.isReaded.toggle()
+            guard info.isReaded != true else { return }
+            info.isReaded = true
             gameTrackingInfos[index] = info
         } else {
             let info = GameTrackingInfo(gameID: gameID, isReaded: true, isFavorite: false)
             gameTrackingInfos.append(info)
-            saveGameTrackingInfos()
         }
+        saveGameTrackingInfos()
+        NotificationCenter.default.post(
+            name: .markedAsReadNotification,
+            object: nil,
+            userInfo: [Global.NotificationInfoKeys.gameID: gameID]
+        )
+    }
+
+    func isReaded(gameID: Int) -> Bool {
+        return gameTrackingInfos.first(where: { $0.gameID == gameID })?.isReaded ?? false
     }
 
 }

@@ -14,6 +14,19 @@ enum Environment {
 }
 
 struct Global {
+
     // TODO: update according to build configuration
     private(set) static var environment: Environment = .prod
+
+    enum NotificationInfoKeys {
+        case gameID
+    }
+
+}
+
+extension Notification.Name {
+
+    static let markedAsReadNotification = Notification.Name("GameMarkedAsRead")
+    static let favoriteStateUpdatedNotification = Notification.Name("GameFavoriteStateUpdated")
+
 }
