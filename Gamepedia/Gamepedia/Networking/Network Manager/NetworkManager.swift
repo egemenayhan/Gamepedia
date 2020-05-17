@@ -11,7 +11,7 @@ import Alamofire
 /// Singleton for all network operations.
 final class NetworkManager {
 
-    public static let shared = NetworkManager()
+    static let shared = NetworkManager()
     private let session: Session
 
     // MARK: - Init

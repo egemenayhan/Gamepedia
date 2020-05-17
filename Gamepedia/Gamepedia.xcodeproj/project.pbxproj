@@ -40,6 +40,7 @@
 		7BC29DA724702CA700F173F2 /* GameDetailViewControllerPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DA624702CA700F173F2 /* GameDetailViewControllerPresentation.swift */; };
 		7BC29DA9247039A000F173F2 /* UIImage+Gamepedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DA8247039A000F173F2 /* UIImage+Gamepedia.swift */; };
 		7BC29DAC24712EC700F173F2 /* GameDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DAB24712EC700F173F2 /* GameDetailsRequest.swift */; };
+		7BC29DAE2471635C00F173F2 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC29DAD2471635C00F173F2 /* UserDefaultsManager.swift */; };
 		7BCD45C1246D473D001A50B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45C0246D473D001A50B9 /* AppDelegate.swift */; };
 		7BCD45CA246D473D001A50B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45C9246D473D001A50B9 /* Assets.xcassets */; };
 		7BCD45CD246D473D001A50B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BCD45CB246D473D001A50B9 /* LaunchScreen.storyboard */; };
@@ -94,6 +95,7 @@
 		7BC29DA624702CA700F173F2 /* GameDetailViewControllerPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewControllerPresentation.swift; sourceTree = "<group>"; };
 		7BC29DA8247039A000F173F2 /* UIImage+Gamepedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gamepedia.swift"; sourceTree = "<group>"; };
 		7BC29DAB24712EC700F173F2 /* GameDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsRequest.swift; sourceTree = "<group>"; };
+		7BC29DAD2471635C00F173F2 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		7BCD45BD246D473D001A50B9 /* Gamepedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gamepedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BCD45C0246D473D001A50B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BCD45C9246D473D001A50B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				7BA1132F246D85C700BE3C05 /* Instantiatable.swift */,
 				7BC29D8A246E85B700F173F2 /* UIColor+Gamepedia.swift */,
 				7BC29DA8247039A000F173F2 /* UIImage+Gamepedia.swift */,
+				7BC29DAD2471635C00F173F2 /* UserDefaultsManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				7BC29DA724702CA700F173F2 /* GameDetailViewControllerPresentation.swift in Sources */,
 				7BA11337246D86B600BE3C05 /* BaseViewController.swift in Sources */,
 				7BC29D96246ED16B00F173F2 /* GameListViewControllerPresentation.swift in Sources */,
+				7BC29DAE2471635C00F173F2 /* UserDefaultsManager.swift in Sources */,
 				7BA11325246D822B00BE3C05 /* TabBarController.swift in Sources */,
 				7BA11307246D54B200BE3C05 /* BaseURL.swift in Sources */,
 				7BA11316246D5F4600BE3C05 /* GlobalVariables.swift in Sources */,

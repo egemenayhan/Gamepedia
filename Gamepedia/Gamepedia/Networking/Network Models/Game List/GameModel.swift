@@ -8,12 +8,15 @@
 
 import Foundation
 
-struct Game: Decodable {
+// MARK: - Game
+
+struct Game: Codable {
 
     let id: Int
     let name: String?
     let metacritic: Int?
     let imagePath: String?
+    private let htmlDescription: String?
     var description: NSAttributedString? = nil
     let redditPath: String?
     let websitePath: String?
@@ -26,13 +29,16 @@ struct Game: Decodable {
         case redditPath = "reddit_url"
     }
 
+    // Decoding
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         id = try container.decode(Int.self, forKey: .id)
         name = try? container.decode(String.self, forKey: .name)
         metacritic = try? container.decode(Int.self, forKey: .metacritic)
-        if let htmlText = try? container.decode(String.self, forKey: .description) {
+        htmlDescription = try? container.decode(String.self, forKey: .description)
+        if let htmlText = htmlDescription {
             let data = Data(htmlText.utf8)
             if let attributedString = try? NSAttributedString(
                 data: data,
@@ -48,10 +54,36 @@ struct Game: Decodable {
         genres = try? container.decode([Genre].self, forKey: .genres).compactMap({ $0.name })
     }
 
+    // Encoding
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try? container.encode(name, forKey: .name)
+        try? container.encode(metacritic, forKey: .metacritic)
+        try? container.encode(imagePath, forKey: .imagePath)
+        try? container.encode(redditPath, forKey: .redditPath)
+        try? container.encode(websitePath, forKey: .websitePath)
+        try? container.encode(genres, forKey: .genres)
+        try? container.encode(htmlDescription, forKey: .description)
+    }
+
 }
 
-struct Genre: Decodable {
+// MARK: - Genre
+
+struct Genre: Codable {
 
     let name: String?
+
+}
+
+// MARK: - GameTrackingInfo
+
+struct GameTrackingInfo: Codable {
+
+    var gameID: Int
+    var isReaded: Bool
+    var isFavorite: Bool
 
 }
