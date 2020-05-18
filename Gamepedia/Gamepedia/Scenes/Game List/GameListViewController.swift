@@ -119,9 +119,9 @@ class GameListViewController: BaseViewController {
                 )
                 alertController.addAction(UIAlertAction(title: "Ok", style: .default))
                 strongSelf.present(alertController, animated: true, completion: nil)
+            }
         }
     }
-}
 
     private func scrollToTop() {
         if viewModel.state.sourceArray.count > 0 {
@@ -133,19 +133,19 @@ class GameListViewController: BaseViewController {
         }
     }
 
-@objc private func reloadUI() {
-    viewModel.reloadGames()
-}
-
-private func showEmptyViewIfNeeded() {
-    if viewModel.state.isSearchActive, (searchBar.text?.count ?? 0) < Global.minimumCharacterCountForSearch {
-        let emptyView = EmptyTableViewBackgroundView(frame: tableView.bounds)
-        emptyView.titleLabel.text = "No game has been searched."
-        tableView.backgroundView = emptyView
-    } else {
-        tableView.backgroundView = nil
+    @objc private func reloadUI() {
+        viewModel.reloadGames()
     }
-}
+
+    private func showEmptyViewIfNeeded() {
+        if viewModel.state.isSearchActive, (searchBar.text?.count ?? 0) < Global.minimumCharacterCountForSearch {
+            let emptyView = EmptyTableViewBackgroundView(frame: tableView.bounds)
+            emptyView.titleLabel.text = "No game has been searched."
+            tableView.backgroundView = emptyView
+        } else {
+            tableView.backgroundView = nil
+        }
+    }
 
 }
 
@@ -205,6 +205,7 @@ extension GameListViewController: UISearchBarDelegate {
         if searchBar.text?.isEmpty ?? true {
             viewModel.enableSearch(false)
         }
+        showEmptyViewIfNeeded()
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
