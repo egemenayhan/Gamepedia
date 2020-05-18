@@ -8,33 +8,9 @@
 
 import UIKit
 
-protocol TabBarInitialRoutable {
-
-    func routeToTabBar()
-}
-
-extension TabBarInitialRoutable {
-
-    func routeToTabBar() {
-
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-            let window = appDelegate.window else {
-
-                return
-        }
-
-        let tabbarController = TabBarController()
-        appDelegate.tabbarController = tabbarController
-        window.rootViewController = tabbarController
-        window.makeKeyAndVisible()
-    }
-}
-
 // MARK: - TabBarController
 
 class TabBarController: UITabBarController {
-
-    private(set) var controllers: [BaseViewController] = []
 
     init() {
 
@@ -58,7 +34,7 @@ class TabBarController: UITabBarController {
 
     private func setupViewControllers() {
 
-        controllers = []
+        var controllers: [BaseViewController] = []
 
         let gameListController = GameListViewController.instantiate()
         gameListController.tabBarItem = UITabBarItem(
