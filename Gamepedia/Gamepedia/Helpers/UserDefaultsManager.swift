@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: UserDefaultsType
+
 protocol UserDefaultsType {
 
     func data(forKey defaultName: String) -> Data?
@@ -15,7 +17,11 @@ protocol UserDefaultsType {
 
 }
 
+// MARK: UserDefaults extension
+
 extension UserDefaults: UserDefaultsType {}
+
+// MARK: UserDefaultsManager
 
 class UserDefaultsManager {
 
@@ -56,7 +62,7 @@ class UserDefaultsManager {
         defaults.set(data, forKey: Constants.gameTrackingInfoKey)
     }
 
-    // MARK: - Favoorite operations
+    // MARK: - Favorite operations
 
     func toggleFavoriteState(for game: Game) {
         if let index = gameTrackingInfos.firstIndex(where: { $0.gameID == game.id }) {
