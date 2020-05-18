@@ -187,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				7BCD45C0246D473D001A50B9 /* AppDelegate.swift */,
-				7BA11315246D5F4600BE3C05 /* GlobalVariables.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -246,8 +245,8 @@
 		7BA11327246D846400BE3C05 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				7BA11328246D848B00BE3C05 /* FavoritesViewController.swift */,
 				7BA11331246D861F00BE3C05 /* FavoritesViewController.storyboard */,
+				7BA11328246D848B00BE3C05 /* FavoritesViewController.swift */,
 				7BC29DAF247183B100F173F2 /* FavoritesViewModel.swift */,
 				7BC29DB1247193DA00F173F2 /* FavoritesViewControllerPresentation.swift */,
 			);
@@ -262,6 +261,7 @@
 				7BC29D8A246E85B700F173F2 /* UIColor+Gamepedia.swift */,
 				7BC29DA8247039A000F173F2 /* UIImage+Gamepedia.swift */,
 				7BC29DAD2471635C00F173F2 /* UserDefaultsManager.swift */,
+				7BA11315246D5F4600BE3C05 /* GlobalVariables.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
