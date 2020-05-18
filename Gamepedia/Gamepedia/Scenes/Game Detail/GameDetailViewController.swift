@@ -64,9 +64,14 @@ class GameDetailViewController: BaseViewController {
             case .favoriteStateUpdated:
                 strongSelf.presentation.update(with: strongSelf.viewModel.state)
                 strongSelf.updateFavoriteState()
-            case .showError(_):
-                // TODO: handle error
-                break
+            case .showError(let error):
+                let alertController = UIAlertController(
+                    title: "Error!",
+                    message: error.localizedDescription,
+                    preferredStyle: .alert
+                )
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                strongSelf.present(alertController, animated: true, completion: nil)
             }
         }
     }
