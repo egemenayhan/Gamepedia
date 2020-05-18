@@ -10,11 +10,9 @@ import UIKit
 
 class BaseViewController: UIViewController, Instantiatable {
 
-    // TODO: implementation
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = UIColor.white248.withAlphaComponent(0.92)
     }
