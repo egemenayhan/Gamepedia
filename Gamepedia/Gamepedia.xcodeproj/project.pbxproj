@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B5DC91F247290A200BCA9A5 /* UserDefaultsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DC91E247290A200BCA9A5 /* UserDefaultsManagerTests.swift */; };
 		7BA112FC246D538800BE3C05 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA112FB246D538800BE3C05 /* Alamofire.framework */; };
 		7BA112FD246D538800BE3C05 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA112FB246D538800BE3C05 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7BA11301246D541700BE3C05 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA11300246D541700BE3C05 /* Endpoint.swift */; };
@@ -50,6 +51,16 @@
 		7BCD45D7246D52F1001A50B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD45D6246D52F1001A50B9 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7B5DC919247282AB00BCA9A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BCD45B5246D473D001A50B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BCD45BC246D473D001A50B9;
+			remoteInfo = Gamepedia;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		7BA112FE246D538800BE3C05 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -66,6 +77,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B5DC914247282AB00BCA9A5 /* GamepediaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GamepediaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B5DC918247282AB00BCA9A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B5DC91E247290A200BCA9A5 /* UserDefaultsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTests.swift; sourceTree = "<group>"; };
 		7BA112F7246D537000BE3C05 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Alamofire; path = Carthage/Build/iOS/Alamofire.framework/Alamofire; sourceTree = "<group>"; };
 		7BA112FB246D538800BE3C05 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7BA11300246D541700BE3C05 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -111,6 +125,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7B5DC911247282AB00BCA9A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BCD45BA246D473D001A50B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -123,6 +144,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B5DC915247282AB00BCA9A5 /* GamepediaTests */ = {
+			isa = PBXGroup;
+			children = (
+				7B5DC918247282AB00BCA9A5 /* Info.plist */,
+				7B5DC91E247290A200BCA9A5 /* UserDefaultsManagerTests.swift */,
+			);
+			path = GamepediaTests;
+			sourceTree = "<group>";
+		};
 		7BA112F6246D537000BE3C05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				7BCD45BF246D473D001A50B9 /* Gamepedia */,
+				7B5DC915247282AB00BCA9A5 /* GamepediaTests */,
 				7BCD45BE246D473D001A50B9 /* Products */,
 				7BA112F6246D537000BE3C05 /* Frameworks */,
 			);
@@ -304,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				7BCD45BD246D473D001A50B9 /* Gamepedia.app */,
+				7B5DC914247282AB00BCA9A5 /* GamepediaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -342,6 +374,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7B5DC913247282AB00BCA9A5 /* GamepediaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B5DC91D247282AB00BCA9A5 /* Build configuration list for PBXNativeTarget "GamepediaTests" */;
+			buildPhases = (
+				7B5DC910247282AB00BCA9A5 /* Sources */,
+				7B5DC911247282AB00BCA9A5 /* Frameworks */,
+				7B5DC912247282AB00BCA9A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7B5DC91A247282AB00BCA9A5 /* PBXTargetDependency */,
+			);
+			name = GamepediaTests;
+			productName = GamepediaTests;
+			productReference = 7B5DC914247282AB00BCA9A5 /* GamepediaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7BCD45BC246D473D001A50B9 /* Gamepedia */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BCD45D1246D473D001A50B9 /* Build configuration list for PBXNativeTarget "Gamepedia" */;
@@ -370,6 +420,10 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Egemen Ayhan";
 				TargetAttributes = {
+					7B5DC913247282AB00BCA9A5 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 7BCD45BC246D473D001A50B9;
+					};
 					7BCD45BC246D473D001A50B9 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -389,11 +443,19 @@
 			projectRoot = "";
 			targets = (
 				7BCD45BC246D473D001A50B9 /* Gamepedia */,
+				7B5DC913247282AB00BCA9A5 /* GamepediaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7B5DC912247282AB00BCA9A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BCD45BB246D473D001A50B9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,6 +472,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7B5DC910247282AB00BCA9A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B5DC91F247290A200BCA9A5 /* UserDefaultsManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BCD45B9246D473D001A50B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -450,6 +520,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7B5DC91A247282AB00BCA9A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7BCD45BC246D473D001A50B9 /* Gamepedia */;
+			targetProxy = 7B5DC919247282AB00BCA9A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		7BCD45CB246D473D001A50B9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -462,6 +540,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7B5DC91B247282AB00BCA9A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YDABZ672Z5;
+				INFOPLIST_FILE = GamepediaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.egemenayhan.GamepediaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gamepedia.app/Gamepedia";
+			};
+			name = Debug;
+		};
+		7B5DC91C247282AB00BCA9A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YDABZ672Z5;
+				INFOPLIST_FILE = GamepediaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.egemenayhan.GamepediaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gamepedia.app/Gamepedia";
+			};
+			name = Release;
+		};
 		7BCD45CF246D473D001A50B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -633,6 +751,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7B5DC91D247282AB00BCA9A5 /* Build configuration list for PBXNativeTarget "GamepediaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B5DC91B247282AB00BCA9A5 /* Debug */,
+				7B5DC91C247282AB00BCA9A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7BCD45B8246D473D001A50B9 /* Build configuration list for PBXProject "Gamepedia" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

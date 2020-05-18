@@ -8,19 +8,29 @@
 
 import Foundation
 
+protocol UserDefaultsType {
+
+    func data(forKey defaultName: String) -> Data?
+    func set(_ value: Any?, forKey defaultName: String)
+
+}
+
+extension UserDefaults: UserDefaultsType {}
+
 class UserDefaultsManager {
 
-    private enum Constants {
+    enum Constants {
         static let gameListKey = "GameList"
         static let gameTrackingInfoKey = "GameTrackingInfo"
     }
 
-    static let shared = UserDefaultsManager()
-    private let defaults = UserDefaults.standard
+    static let shared = UserDefaultsManager(defaults: UserDefaults.standard)
+    private let defaults: UserDefaultsType
     private(set) var gameTrackingInfos: [GameTrackingInfo] = []
     private(set) var gameList: [Game] = []
 
-    init() {
+    init(defaults: UserDefaultsType) {
+        self.defaults = defaults
         gameTrackingInfos = getGameTrackingInfos()
         gameList = getGameList()
     }

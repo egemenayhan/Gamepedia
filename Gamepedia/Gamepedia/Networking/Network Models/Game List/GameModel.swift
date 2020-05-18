@@ -36,6 +36,28 @@ struct Game: Codable {
         case redditPath = "reddit_url"
     }
 
+    init(
+        id: Int,
+        name: String? = nil,
+        metacritic: Int? = nil,
+        imagePath: String? = nil,
+        htmlDescription: String? = nil,
+        description: NSAttributedString? = nil,
+        redditPath: String? = nil,
+        websitePath: String? = nil,
+        genres: [String]? = nil
+    ) {
+        self.id = id
+        self.name = name
+        self.metacritic = metacritic
+        self.imagePath = imagePath
+        self.htmlDescription = htmlDescription
+        self.description = description
+        self.redditPath = redditPath
+        self.websitePath = websitePath
+        self.genres = genres
+    }
+
     // Decoding
 
     init(from decoder: Decoder) throws {
