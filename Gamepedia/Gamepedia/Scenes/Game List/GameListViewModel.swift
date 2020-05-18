@@ -74,7 +74,6 @@ struct GameListState {
         case loaded
         case gamesReloaded
         case nextPageFetched([Game])
-        case markedAsRead
         case dataSourceUpdated
         case gameSetAsReaded(atIndex: Int)
         case showError(NetworkingError)
@@ -99,14 +98,31 @@ class GameListViewModel {
         return activeNetworkTask != nil
     }
 
+    init() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(gameSetAsReaded(_:)),
+            name: .markedAsReadNotification,
+            object: nil
+        )
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     func addChangeHandler(handler: StateChangehandler?) {
         stateChangeHandler = handler
     }
 
-    func gameSetAsReaded(gameID: Int) {
-        guard let gameIndex = state.sourceArray.firstIndex(where: { $0.id == gameID }) else { return }
+    @objc private func gameSetAsReaded(_ notification: Notification) {
+        guard let gameID = notification.userInfo?[Global.NotificationInfoKeys.gameID] as? Int,
+            let gameIndex = state.sourceArray.firstIndex(where: { $0.id == gameID }) else { return }
+
         stateChangeHandler?(.gameSetAsReaded(atIndex: gameIndex))
     }
+
+    // MARK: - Network operations
 
     func reloadGames() {
         guard !isOperationInProgress, (!state.isSearchActive || (state.searchText?.count ?? 0 >= Global.minimumCharacterCountForSearch)) else {

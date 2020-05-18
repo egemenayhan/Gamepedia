@@ -36,13 +36,6 @@ class GameListViewController: BaseViewController {
 
         navigationItem.title = "Games"
 
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(gameMarkedAsRead(_:)),
-            name: .markedAsReadNotification,
-            object: nil
-        )
-
         configureTableView()
 
         searchBar.delegate = self
@@ -55,11 +48,6 @@ class GameListViewController: BaseViewController {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
-    }
-
-    @objc private func gameMarkedAsRead(_ notification: Notification) {
-        guard let gameID = notification.userInfo?[Global.NotificationInfoKeys.gameID] as? Int else { return }
-        viewModel.gameSetAsReaded(gameID: gameID)
     }
 
     private func preloadContent() {
@@ -99,7 +87,6 @@ class GameListViewController: BaseViewController {
     private func configureViewModel() {
         viewModel.addChangeHandler { [weak self] (change) in
             guard let strongSelf = self else { return }
-            // TODO: handle changes
             switch change {
             case .nextPageFetched(let games):
                 strongSelf.presentation.updateWithNextPage(games)
@@ -116,38 +103,49 @@ class GameListViewController: BaseViewController {
             case .dataSourceUpdated:
                 strongSelf.presentation.update(with: strongSelf.viewModel.state)
                 strongSelf.tableView.reloadData()
-                if strongSelf.viewModel.state.sourceArray.count > 0 {
-                    strongSelf.tableView.scrollToRow(
-                        at: IndexPath(row: 0, section: 0),
-                        at: .top,
-                        animated: true
-                    )
-                }
+                strongSelf.scrollToTop()
             case .gameSetAsReaded(let index):
                 strongSelf.presentation.gameSetAsReaded(at: index)
                 strongSelf.tableView.reloadRows(
                     at: [IndexPath(row: index, section: 0)],
                     with: .automatic
                 )
-            default:
-                break
-            }
+            case .showError(let error):
+                strongSelf.scrollToTop()
+                let alertController = UIAlertController(
+                    title: "Error!",
+                    message: error.localizedDescription,
+                    preferredStyle: .alert
+                )
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                strongSelf.present(alertController, animated: true, completion: nil)
+        }
+    }
+}
+
+    private func scrollToTop() {
+        if viewModel.state.sourceArray.count > 0 {
+            tableView.scrollToRow(
+                at: IndexPath(row: 0, section: 0),
+                at: .top,
+                animated: true
+            )
         }
     }
 
-    @objc private func reloadUI() {
-        viewModel.reloadGames()
-    }
+@objc private func reloadUI() {
+    viewModel.reloadGames()
+}
 
-    private func showEmptyViewIfNeeded() {
-        if viewModel.state.isSearchActive, (searchBar.text?.count ?? 0) < Global.minimumCharacterCountForSearch {
-            let emptyView = EmptyTableViewBackgroundView(frame: tableView.bounds)
-            emptyView.titleLabel.text = "No game has been searched."
-            tableView.backgroundView = emptyView
-        } else {
-            tableView.backgroundView = nil
-        }
+private func showEmptyViewIfNeeded() {
+    if viewModel.state.isSearchActive, (searchBar.text?.count ?? 0) < Global.minimumCharacterCountForSearch {
+        let emptyView = EmptyTableViewBackgroundView(frame: tableView.bounds)
+        emptyView.titleLabel.text = "No game has been searched."
+        tableView.backgroundView = emptyView
+    } else {
+        tableView.backgroundView = nil
     }
+}
 
 }
 
