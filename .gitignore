@@ -10,7 +10,7 @@ xcuserdata/
 *.xccheckout
 
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
-build/
+#build/
 DerivedData/
 *.moved-aside
 *.pbxuser
@@ -61,7 +61,7 @@ playground.xcworkspace
 
 # Carthage
 #
-/Gamepedia/Carthage
+#/Gamepedia/Carthage
 
 # Accio dependency management
 Dependencies/
